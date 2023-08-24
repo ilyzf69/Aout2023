@@ -7,8 +7,6 @@ function App() {
   const [web3, setWeb3] = useState(null);
   const [contractInstance, setContractInstance] = useState(null);
   const [accounts, setAccounts] = useState([]);
-  const [conjoint1, setConjoint1] = useState('');
-  const [conjoint2, setConjoint2] = useState('');
 
   useEffect(() => {
     const initWeb3 = async () => {
@@ -18,8 +16,8 @@ function App() {
           const web3Instance = new Web3(window.ethereum);
           setWeb3(web3Instance);
 
-          const contractAddress = '0x28E8344B9C3E210d0D71FDC3a0182ebC04d6450b'; // Replace with your contract address
-          const contractABI = [{"inputs":[{"internalType":"address","name":"_conjoint1","type":"address"},{"internalType":"address","name":"_conjoint2","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"conjoint1","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"conjoint2","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"demanderDivorce","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"demanderMariage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"estDivorce","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"estMarie","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"}]; // Replace with your contract ABI
+          const contractAddress = '0x51b4ab32d0a27E54C52AfDa5FbF4886900eCA880';
+          const contractABI = [{"inputs":[{"internalType":"address","name":"_conjoint1","type":"address"},{"internalType":"address","name":"_conjoint2","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"address","name":"_enfant","type":"address"}],"name":"ajouterEnfant","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"conjoint1","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"conjoint2","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"demanderDivorce","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"demanderMariage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"enfants","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"estDivorce","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"estMarie","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getEnfants","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_enfant","type":"address"}],"name":"heriterEnfant","outputs":[],"stateMutability":"nonpayable","type":"function"}];
 
           const marriageContract = new web3Instance.eth.Contract(contractABI, contractAddress);
           setContractInstance(marriageContract);
@@ -40,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Marriage Contract App</h1>
+        <h1>Contrat de mariage</h1>
         {web3 && contractInstance ? (
           <Contract contractInstance={contractInstance} accounts={accounts} />
         ) : (

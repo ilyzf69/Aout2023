@@ -26,7 +26,15 @@
   text-align: left;
 }
 
-button {
+.Contract h2 {
+  color: #007bff;
+}
+
+.Contract p {
+  margin-bottom: 10px;
+}
+
+.Contract button {
   padding: 10px 20px;
   margin: 5px;
   border: none;
@@ -34,4 +42,20 @@ button {
   color: white;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.Contract ul {
+  list-style: none;
+  padding: 0;
+}
+
+.Contract li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Contract li button {
+  background-color: #28a745;
 }
